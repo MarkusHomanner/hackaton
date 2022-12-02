@@ -1,20 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: serving.knative.dev/v1
+kind: Service
 metadata:
   name: hello-world
+  namespace: default
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: hello-world
   template:
-    metadata:
-      labels:
-        app: hello-world
     spec:
       containers:
         - image: harbor.bar.kube-plus.cloud/hackathon/hello-world:v2
-          name: guestbook-ui
           ports:
-            - containerPort: 80
+            - containerPort: 8080
