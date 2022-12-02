@@ -7,6 +7,6 @@ spec:
   template:
     spec:
       containers:
-        - image: harbor.bar.kube-plus.cloud/hackathon/hello-world:v2
+        - image: harbor.bar.kube-plus.cloud/hackathon/hello-world
           ports:
             - containerPort: 8080
