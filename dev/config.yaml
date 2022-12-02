@@ -1,0 +1,55 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"name":"hello-world","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"client.knative.dev/user-image":"harbor.bar.kube-plus.cloud/hackathon/hello-world"}},"spec":{"containers":[{"image":"harbor.bar.kube-plus.cloud/hackathon/hello-world","name":""}]}}}}'
+    serving.knative.dev/creator: Jochen.Kaehler@swisscom.com
+    serving.knative.dev/lastModifier: Jochen.Kaehler@swisscom.com
+  creationTimestamp: "2022-12-02T13:43:46Z"
+  generation: 1
+  name: hello-world
+  namespace: default
+  resourceVersion: "9521580"
+  uid: f10b42bb-b890-4529-b935-15176737b046
+spec:
+  template:
+    metadata:
+      annotations:
+        client.knative.dev/user-image: harbor.bar.kube-plus.cloud/hackathon/hello-world
+      creationTimestamp: null
+    spec:
+      containerConcurrency: 0
+      containers:
+      - image: harbor.bar.kube-plus.cloud/hackathon/hello-world
+        name: user-container
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+        resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
+status:
+  address:
+    url: http://hello-world.default.svc.cluster.local
+  conditions:
+  - lastTransitionTime: "2022-12-02T13:43:55Z"
+    status: "True"
+    type: ConfigurationsReady
+  - lastTransitionTime: "2022-12-02T13:44:23Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2022-12-02T13:44:23Z"
+    status: "True"
+    type: RoutesReady
+  latestCreatedRevisionName: hello-world-00001
+  latestReadyRevisionName: hello-world-00001
+  observedGeneration: 1
+  traffic:
+  - latestRevision: true
+    percent: 100
+    revisionName: hello-world-00001
+  url: https://hello-world.default.bar.kube-plus.cloud
